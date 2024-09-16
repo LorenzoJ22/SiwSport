@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presidenti</title>
+    <link rel="stylesheet" href="/css/style.css">
+    
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="/"><img src="/images/im.png" width="15%"></a>
+        </div>
+    </header>
+
+    <div class="content">
+        <h1>Presidenti:</h1>
+
+        <div th:if="${presidenti.isEmpty()}" class="no-chefs">Non ci sono presidenti nel sistema</div>
+
+        <ul class="chef-list" th:if="${!presidenti.isEmpty()}">
+            <li th:each="Presidente : ${presidenti}">
+                <a th:href="@{'/Presidente/' + ${Presidente.id}}" th:text="${Presidente.nome}"></a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

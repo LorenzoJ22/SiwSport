@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giocatore</title>
+    <link rel="stylesheet" href="/css/styleGiocatore.css">
+   
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="/"><img src="/images/im.png" width="30%"></a>
+        </div>
+    </header>
+
+    <div class="content">
+        <h1 th:text="${Giocatore.nome} + ' ' + ${Giocatore.cognome}"></h1>
+    </div>
+     		<div class="details">
+     		<p><span>Data:</span> <span th:text="${Giocatore.data}"></span></p>
+            <p><span>Luogo di Nascita:</span> <span th:text="${Giocatore.luogoDiNascita}"></span></p>
+            <p><span>Ruolo:</span> <span th:text="${Giocatore.ruolo}"></span></p>
+            <p><span>Data Inizio:</span> <span th:text="${Giocatore.dataInizio}"></span></p>
+            <p><span>Data Fine:</span> <span th:text="${Giocatore.dataFine}"></span></p>
+            <p><span>Squadra:</span> <span th:text="${Giocatore.squadra.nome}"></span></p>
+     </div>
+    
+</body>
+
+</html>

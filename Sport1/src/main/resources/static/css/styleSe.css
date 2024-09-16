@@ -1,0 +1,112 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background: url('/images/6272.jpg') no-repeat left center fixed; 
+    background-size: 70%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-position: 100%; 
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 50px;
+    text-align: center; 
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+header a {
+    color: #fff;
+    margin-left: 25px;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #007BFF;
+    transition: background-color 0.3s;
+    font-size: 20px;
+}
+
+header a:hover {
+    background-color: #005f5f;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.logo img {
+    width: 70%;
+}
+
+h1 {
+    text-align: center;
+    font-size: 26px;
+    color: black;
+    font-family: 'Georgia', serif;
+    width: 100%; /* Assicura che occupi l'intera larghezza */
+    margin: 20px 30px;
+    padding: 0; /* Rimuove il padding sinistro che può influire sul centramento */
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+.content a {
+    display: inline-block;
+    background-color: #4da6ff;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 10px 0;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+
+
+form {
+    width: 50%;
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px; /* Aumentato la dimensione del testo */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px; /* Aumentato la dimensione del testo */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #777;
+}

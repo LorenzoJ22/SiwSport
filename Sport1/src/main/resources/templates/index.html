@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiwSport - Homepage</title>
+    <link rel="stylesheet" href="static/css/styleIndex.css?version=2">
+    <style>
+        /* CSS migliorato */
+        body {
+            font-family: Arial, sans-serif;
+            background: url('/images/6272.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header div {
+            margin: 0 20px;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 10px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            background-color: #555;
+            transition: background-color 0.3s;
+        }
+
+        header a:hover {
+            background-color: #777;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .logo img {
+            width: 100%;
+        }
+
+        .content {
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Modifica al colore del titolo */
+        h1 {
+            color: #4da6ff; /* Colore blu per l'H1 */
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .menu {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .menu li {
+            margin: 10px 0;
+        }
+
+        /* Modifica al tasto con colore blu */
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            background-color: #007BFF; /* Colore blu per il bottone */
+            transition: background-color 0.3s;
+            display: inline-block;
+            font-size: 20px;
+        }
+
+        .menu a:hover {
+            background-color: #0056b3; /* Colore blu più scuro al passaggio del mouse */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div th:if="${userDetails}">
+            <span th:text="${userDetails.username}"></span>
+            <a href="/logout">Logout</a>
+        </div>
+        <div th:unless="${user}">
+            <a href="/login">Login</a>
+        </div>
+    </header>
+
+    <div class="logo">
+        <img src="/images/im.png" alt="Logo">
+    </div>
+
+    <div class="content">
+        <h1>Consulta</h1>
+        <ul class="menu">
+            <li>
+                <a href="/Squadre">Squadre</a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

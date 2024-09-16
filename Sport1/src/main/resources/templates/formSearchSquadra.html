@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cerca Squadra</title>
+    <link rel="stylesheet" href="/css/styleSe.css">
+</head>
+
+<body>
+    <header>
+        <div th:if="${userDetails}">
+            <span th:text="${userDetails.username}"></span>
+            <a href="/logout">Logout</a>
+        </div>
+        <div th:unless="${user}">
+            <a href="/login">Login</a>
+        </div>
+    </header>
+
+    <div>
+        <a href="/"><img src="/images/im.png" width="100%" /></a>
+    </div>
+    <h1>Cerca Squadre per nome</h1>
+    <form th:action="@{/searchSquadra}" method="post">
+        <div>Nome: <input type="text" th:value="${nome}" name="nome" />
+        </div>
+        <div><input type="submit" value="Cerca" /></div>
+        
+    </form>
+</body>
+
+</html>

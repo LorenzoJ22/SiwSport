@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squadra</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="/"><img src="/images/im.png" width="15%"></a>
+        </div>
+    </header>
+
+    <div class="content">
+        <div th:if="${Squadra}">
+        <h1 th:text="'Nome della squadra: ' + ${Squadra.nome}" ></h1> 
+		
+            <div th:if="${Squadra.presidente != null}">
+            	<h2 th:text="'Nome del Presidente: ' + ${Squadra.presidente.nome}">
+            </div>
+            <div th:if="${Squadra.presidente == null}" class="no-president">
+                <h2>Presidente non impostato.</h2>
+            </div>        
+			<h1>Giocatori della  squadra:</h1>
+		<div th:if="${Squadra != null}">
+    	<a th:href="@{'/Squadra/' + ${Squadra.id} +'/Giocatori'}">Giocatori della squadra</a>
+		</div>
+		<div th:if="${Squadra == null}">
+    	<p>Attualmente non sei assegnato a nessuna squadra.</p>
+		</div>
+            </div>
+            
+		
+        <div th:unless="${Squadra}" class="no-recipe">Squadra non trovata</div>
+    </div>
+</body>
+
+</html>

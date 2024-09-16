@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuova Squadra</title>
+    <link rel="stylesheet" href="/css/styleG.css">
+    
+</head>
+
+<body>
+    <header>
+       <div >
+            <a href="/"><img src="/images/im.png" width="30%"></a>
+        </div>
+    </header>
+		
+    	
+    <div class="content">
+        <h1>Aggiungi una Squadra</h1>
+
+        <div class="form-container">
+            <form th:action="@{/NewsquadreAdmin}" method="POST" th:object="${squadra}">
+                <div class="error-message" th:if="${messaggioErrore}">
+                    <span th:text="${messaggioErrore}">Errore</span>
+                </div>
+                <div>
+                    <label for="nome">Nome:</label>
+                    <input required type="text" id="nome" th:field="${squadra.nome}">
+                </div>
+                <div>
+                    <label for="anno">Anno:</label>
+                    <input type="date" id="anno" th:field="${squadra.anno}">
+                </div>
+                <div>
+                 <label for="indirizzo">Indirizzo:</label>
+                    <input type="text" id="indirizzo" th:field="${squadra.indirizzo}">
+                </div>
+                 <div>
+                    <label for="presidente">presidente:</label>
+                    <select id="presidente" th:field="${squadra.presidente}">
+                         <option value="" selected>-- Nessun presidente --</option>
+                        <option th:each="presidente : ${presidenti}" 
+                                th:value="${presidente.id}" 
+                                th:text="${presidente.nome}"></option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit">Conferma</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

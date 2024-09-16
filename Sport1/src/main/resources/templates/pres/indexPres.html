@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport - Homepage</title>
+    <link rel="stylesheet" href="/css/stile.css">
+    <style>
+        /* CSS migliorato */
+        body {
+            font-family: Arial, sans-serif;
+            background: url('/images/6272.jpg') no-repeat left center fixed; /* Immagine di sfondo allineata a sinistra */
+            background-size: 70%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-position: 100%; 
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 50px;
+            text-align: left; /* Allinea il testo a sinistra */
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        header a {
+            color: #fff;
+            margin-left: 25px;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #007BFF; /* Colore blu chiaro per i pulsanti dell'header */
+            transition: background-color 0.3s;
+            font-size: 20px;
+        }
+
+        header a:hover {
+            background-color: #005f5f; /* Hover per i pulsanti */
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .logo img {
+            width: 70%;
+        }
+
+        h1, h2 {
+            text-align: left; /* Allinea i titoli a sinistra */
+            font-size: 26px;
+            color: black; /* Colore blu scuro per migliorare la visibilità su sfondo chiaro */
+            font-family: 'Georgia', serif;
+            width: calc(100% - 40px); /* Occupa tutta la larghezza del contenitore meno il padding */
+            margin: 20px 0; /* Margini sopra e sotto per separare i titoli */
+            padding-left: 20px; /* Spazio a sinistra per allontanare i titoli dal bordo */
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Allinea tutto a sinistra */
+            width: 100%; /* Occupa tutta la larghezza del contenitore */
+            padding-left: 20px; /* Spazio a sinistra per allontanare i contenuti dal bordo */
+            box-sizing: border-box; /* Include il padding nella larghezza */
+        }
+
+        .content a {
+            display: inline-block;
+            background-color: #4da6ff; /* Colore blu chiaro per i pulsanti */
+            color: #fff;
+            padding: 10px 20px;
+            margin: 10px 0; /* Margini solo sopra e sotto */
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .content a:hover {
+            background-color: #3399ff; /* Hover sui pulsanti */
+        }
+
+        .content p {
+            font-size: 20px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div th:if="${userDetails}">
+            <span th:text="${userDetails.username}"></span>
+            <a href="/logout">Logout</a>
+        </div>
+        
+        <div>
+            <span th:text="${users.name} + ' ' + ${users.surname}"></span>
+        </div>
+        
+        <div th:unless="${user}">
+            <a href="/login">Login</a>
+        </div>
+    </header>
+
+    <div class="logo">
+        <img src="/images/im.png" alt="Logo">
+    </div>
+
+    <div class="content">
+        <h1>Consulta l'elenco di squadre generale</h1>
+        <a href="/Squadre">Elenco Squadre</a>
+        
+        <h1>Consulta l'elenco di giocatori generale</h1>
+        <a href="/Giocatori">Elenco Giocatori</a>
+        
+        <h1>Cerca Squadre nell'elenco</h1>
+        <a href="/formSearchSquadra">Cerca Squadra</a>
+
+        <h2>Operazioni per Presidente</h2>
+        <div th:if="${Squadra != null}">
+            <a th:href="@{'/SquadraP/' + ${presidente.id}}">Squadra Presidente</a>
+        </div>
+        <div th:if="${Squadra == null}">
+            <p>Attualmente non sei assegnato a nessuna squadra.</p>
+        </div>
+		
+        <h1>Giocatori della tua squadra</h1>
+        <div th:if="${Squadra != null}">
+            <a th:href="@{'/Squadra/' + ${Squadra.id} +'/Giocatori'}">Giocatori</a>
+        </div>
+        <div th:if="${Squadra == null}">
+            <p>Attualmente non sei assegnato a nessuna squadra.</p>
+        </div>
+    </div>
+</body>
+</html>

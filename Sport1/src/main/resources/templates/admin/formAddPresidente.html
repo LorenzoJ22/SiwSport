@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>SiwSport </title>
+    <link rel="stylesheet" href="/cs/style.css">
+    <style>
+       /* Generali */
+body {
+    font-family: Arial, sans-serif;
+     background: url('/images/6272.jpg') no-repeat center center fixed; 
+    		background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+header {
+    width: 100%;
+    background-color: #333;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+}
+
+header a {
+    color: #fff;
+    margin-left: 15px;
+    text-decoration: none;
+    padding: 8px 15px;
+    background-color: #007BFF;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+header a:hover {
+    background-color: #0056b3;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+/* Contenitore del form */
+form {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+/* Etichette */
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Input */
+input[type="text"],
+input[type="date"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="password"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Pulsante */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Messaggi di errore */
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* Immagine del logo */
+img {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
+
+    </style>
+    
+</head>
+
+<body>
+    <header>
+        <div th:if="${userDetails}">
+            <span th:text="${userDetails.username}"></span>
+            <a href="/logout">Logout</a>
+        </div>
+        <div th:unless="${user}">
+            <a href="/login">Login</a>
+        </div>
+    </header>
+
+    <div>
+        <a href="/"><img src="/images/im.png" width="70%" /></a>
+    </div>
+    <h1>Inserisci un nuovo Presidente</h1>
+
+    <form th:action="@{/addPresidente}" method="POST">
+       <div>
+            <label>Nome</label>
+            <input type="text" placeholder="nome" required th:field="${presidente.nome}" />
+            <span th:if="${#fields.hasErrors('presidente.nome')}" class="error" th:errors="${presidente.nome}"></span>
+        </div>
+        <div>
+            <label>Cognome</label>
+            <input type="text" placeholder="cognome" required th:field="${presidente.cognome}" />
+            <span th:if="${#fields.hasErrors('presidente.cognome')}" class="error" th:errors="${presidente.cognome}"></span>
+        </div>
+       <div>
+            <label>Nascita</label>
+            <input type="date"  required th:field="${presidente.nascita}" />
+            <span th:if="${#fields.hasErrors('presidente.nascita')}" class="error" th:errors="${presidente.nascita}"></span>
+        </div>
+        <div>
+            <label>Codice Fiscale</label>
+            <input type="text" placeholder="codiceFiscale" required th:field="${presidente.codiceFiscale}" />
+            <span th:if="${#fields.hasErrors('presidente.codiceFiscale')}" class="error" th:errors="${presidente.codiceFiscale}"></span>
+        </div>
+         <div>
+            <label>Luogo di Nascita</label>
+            <input type="text" placeholder="luogoDiNascita" required th:field="${presidente.luogoDiNascita}" />
+            <span th:if="${#fields.hasErrors('presidente.luogoDiNascita')}" class="error" th:errors="${presidente.luogoDiNascita}"></span>
+        </div>
+        <div>
+            <label>Username</label>
+            <input type="text" placeholder="username" required th:field="${credentials.username}" />
+            <span th:if="${#fields.hasErrors('credentials.username')}" class="error"
+                th:errors="${credentials.username}"></span>
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" placeholder="password" required th:field="${credentials.password}" />
+            <span th:if="${#fields.hasErrors('credentials.password')}" class="error"
+                th:errors="${credentials.password}"></span>
+        </div>
+        <div>
+            <button type="submit">Aggiungi Presidente</button>
+        </div>
+    </form>
+</body>
+
+</html>

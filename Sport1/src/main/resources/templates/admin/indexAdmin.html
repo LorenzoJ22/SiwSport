@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SiwMovie - Homepage</title>
+    <link rel="stylesheet" href="/css/stile.css">
+    <style>
+        /* CSS inline per dimostrazione; sposta in stile.css */
+        body {
+            font-family: Arial, sans-serif;
+            background: url('/images/6272.jpg') no-repeat left center fixed; /* Immagine di sfondo allineata a sinistra */
+            background-size: 70%; /* Dimensiona l'immagine di sfondo */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-position: 80%; /* Posizione dell'immagine di sfondo */
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px; /* Spazio interno per il header */
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box; /* Include il padding nella larghezza dell'header */
+        }
+
+        header div {
+            margin: 0 20px; /* Margine tra i div all'interno dell'header */
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #555; /* Colore di sfondo per i link dell'header */
+            transition: background-color 0.3s;
+            font-size: 20px; /* Dimensione del testo */
+            text-align: left;
+        }
+
+        header a:hover {
+            background-color: #777; /* Colore di sfondo al passaggio del mouse */
+        }
+
+        .logo {
+            margin: 20px 0;
+            text-align: center; /* Allinea il logo al centro */
+        }
+
+        .logo img {
+            width: 90%;
+            max-width: 300px; /* Limita la larghezza massima del logo */
+        }
+
+        h1 {
+            color: #333;
+            font-size: 36px; /* Dimensione del testo */
+            margin: 20px 0;
+            padding-left: 20px; /* Spazio a sinistra per i titoli */
+            text-align: left; /* Allinea il testo a sinistra */
+            width: calc(100% - 40px); /* Occupa tutta la larghezza meno il padding */
+            box-sizing: border-box; /* Include il padding nella larghezza dell'elemento */
+        }
+
+        .content {
+            width: 100%; /* Occupa tutta la larghezza del contenitore */
+            padding: 0 20px; /* Spazio orizzontale all'interno del contenitore */
+            box-sizing: border-box; /* Include il padding nella larghezza dell'elemento */
+            display: flex;
+            flex-direction: column;
+            align-items: left; /* Allinea i pulsanti al centro */
+        }
+
+        .link-button {
+            display: block; /* Rende i pulsanti blocchi e quindi uno sotto l'altro */
+            width: 100%; /* Occupa tutta la larghezza del contenitore */
+            max-width: 300px; /* Limita la larghezza massima dei pulsanti */
+            margin: 10px 0; /* Spazio tra i pulsanti */
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #007BFF; /* Colore blu per i pulsanti */
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px; /* Dimensione del testo */
+            text-align: left; /* Allinea il testo al centro */
+            transition: background-color 0.3s;
+        }
+
+        .link-button:hover {
+            background-color: #0056b3; /* Colore blu scuro al passaggio del mouse */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div th:if="${userDetails}">
+            <span th:text="${userDetails.username}"></span>
+            <a href="/logout">Logout</a>
+        </div>
+
+        <div>
+            <span th:text="${users.name} + ' ' + ${users.surname}"></span>
+        </div>
+
+        <div th:unless="${user}">
+            <a href="/login">Login</a>
+        </div>
+    </header>
+
+    <div class="logo">
+        <img src="/images/im.png" alt="Logo">
+    </div>
+
+    <div class="content">
+        <h1>Consulta l'archivio</h1>
+        <a href="/Squadre" class="link-button">Elenco Squadre</a>
+        <a href="/Presidenti" class="link-button">Elenco Presidenti</a>
+
+        <h1>Cerca squadra nell'elenco</h1>
+        <a href="/formSearchSquadra" class="link-button">Cerca Squadra</a>
+
+        <h1>Operazioni per amministratore</h1>
+        <a href="/NewSquadraAdmin" class="link-button">Aggiungi Squadra nel sistema</a>
+        <a href="/SquadreAdmin" class="link-button">Modifica le squadre senza presidente nel sistema</a>
+        <a href="/PresidentiAdmin" class="link-button">Modifica i presidenti del sistema</a>
+		<a href="/CancellaSquadra" class="link-button">Cancella Squadra</a>
+        <h1>Elenco giocatori</h1>
+        <a href="/Giocatori" class="link-button">Giocatori</a>
+    </div>
+</body>
+
+</html>

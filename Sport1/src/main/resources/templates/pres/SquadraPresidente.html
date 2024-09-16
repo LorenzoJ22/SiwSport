@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squadra</title>
+    <link rel="stylesheet" href="/css/style.css">
+    
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="/"><img src="/images/im.png" alt="Logo SiwMovie"></a>
+        </div>
+    </header>
+
+    <div class="content">
+        <h1>Squadra:</h1>
+
+        <div th:if="${SquadraPresidente.isEmpty()}" class="no-ricette">
+            Non ci sono squadre nel sistema
+        </div>
+        
+        <ul th:if="${!SquadraPresidente.isEmpty()}" th:each="Squadra : ${SquadraPresidente}" class="ricetta-list">
+            <li>
+                <a th:href="@{'/Squadra' + '/' + ${Squadra.id}}" th:text="${Squadra.nome}"></a>
+                <br>
+                <a th:href="@{'/NewGiocatori' + '/' + ${Squadra.id}}">Inserisci giocatori</a>
+                <br>
+				<div th:if="${Squadra != null}">
+    			<a th:href="@{'/Squadra/' + ${Squadra.id} +'/Giocatori'}">Giocatori della tua squadra</a>
+    			<br>
+                <a th:href="@{'/GiocatoriPresidente/' + ${Squadra.id}}">Cancella giocatori dalla squadra</a>
+                <br>
+				</div>
+				
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
