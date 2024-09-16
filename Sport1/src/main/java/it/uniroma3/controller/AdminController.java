@@ -2,6 +2,7 @@ package it.uniroma3.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -242,6 +243,38 @@ public class AdminController {
 				return "admin/PresidentiAdmin.html";
 			}
 	 
+	    /*Tasto per eliminare un Presidente*/
+	    @GetMapping("/CancellaPresidente/{idCu}")
+	    public String cancellaPresidente(@ModelAttribute("presidente")Presidente presidente,
+	    	@PathVariable("idCu") Long idCu, Model model) {
+	    	 if (idCu == null) {
+	    	        throw new IllegalArgumentException("ID non può essere nullo");
+	    	    }
+//	    	Ricetta ricettas = ricettaService.findById(id);
+//	    	Ingrediente in = ingredienteService.findById(idIn);
+	    	System.out.println("L'i del presidente e' :"+idCu);
+	    	Presidente p = presidenteService.findById(idCu);
+	    	
+	    	if(p.getSquadra()!=null) {
+	    		p.getSquadra().setPresidente(null);
+	    	}
+//	    	userService.deleteById(credentialsService.TrovaCredentialsId(idCu));
+	    	Long idUs = presidenteService.findById(idCu).getUseri().getId();
+	    	presidenteService.deleteById(idCu);/*prima cancello il presidente*/
+	    	credentialsService.deleteById(idUs);
+	    	userService.deleteById(idUs);
+	    	/*fare metodo in user repository per cancellare user con id */
+//	    	credentialsService.deleteById(credentialsService.TrovaCredentialsId(idRep));
+//	    	userService.deleteById(userService.(idRep));
+	    	
+	    	
+	    	
+//	    	Credentials cred = credentialsService.getCredentials(credentialsService.TrovaCredentialsId(idCu));
+
+	    	return "redirect:/Presidenti";
+	    }
+	    
+	    
 	 /*Form per aggiungere un presidente*/
 	    @GetMapping(value = "/formAddPresidente") 
 		public String addPresidente(Model model) {

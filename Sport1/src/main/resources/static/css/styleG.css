@@ -19,9 +19,7 @@ header {
     justify-content: center;
 }
 
-header .logo img {
-    max-width: 150px; /* Imposta una larghezza massima per il logo */
-}
+
 
 /* Stile del contenuto */
 .content {

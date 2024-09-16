@@ -19,7 +19,7 @@ public interface CredentialsRepository extends CrudRepository<Credentials,Long> 
 	public Boolean existsByUsername(String username);
 	
 	
-	 	@Query(value = "SELECT c.id FROM credentials c JOIN cuochi ci ON c.cuoco_id = ci.id WHERE c.cuoco_id = :fid", nativeQuery = true)
+	 	@Query(value = "SELECT c.id FROM credentials c JOIN presidente p ON c.user_id = p.useri_id WHERE p.useri_id = :fid", nativeQuery = true)
 		Long TrovaCredentialsId(@Param("fid")Long id);
 	
 		

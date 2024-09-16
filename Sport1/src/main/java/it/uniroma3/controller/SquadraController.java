@@ -81,47 +81,7 @@ public class  SquadraController {
 		}
     
     
-//    /*Form per aggiungere squadre dal presidente, non può farlo lui*/
-//    
-//    @GetMapping("/NewRicetta/{id}")
-//    public String addRicette(@PathVariable("id")Long id,
-//    		 @ModelAttribute("presidente") Presidente presidente, Model model) {    	
-//    	Squadra squadra= new Squadra();
-//    	model.addAttribute("squadra", squadra);
-//    	model.addAttribute(presidente);
-////    	ricetta.setCuoco(cuoco);
-////    	ricetta.getCuoco().setId(id);
-////    	model.addAttribute("Cuoco", cuoco);
-////    	List<Ingrediente>in = new ArrayList<Ingrediente>();
-////    	r.setIngredienti(in);
-////    	model.addAllAttributes(r.getIngredienti());
-//        
-//    	return "cook/formNewRicetta.html";
-//    }
-//    
-//    @PostMapping("/ricette")
-//	public String newSquadra(
-//			@ModelAttribute("squadra")Squadra squadra, Model model, @ModelAttribute("presidente")Presidente presidente) {
-//    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-//		User user= credentials.getUser();
-//		
-//		
-//	        // Associa il cuoco alla ricetta
-//	    squadra.setPresidente(presidente);
-////	    ricetta.getCuoco().setId(cuoco.getId());
-////	    presidente.getSquadra().add(squadra);
-//		this.squadraService.save(squadra);
-////    	Cuoco cuoco = credentials.getCuoco();
-////    	ricetta.setCuoco(cuoco);
-////    	cuoco.getRicette().add(ricetta);
-////    	this.cuocoService.save(cuoco);
-////    	this.ricettaService.save(ricetta);
-//    	
-//		model.addAttribute("Squadre", this.squadraService.findSquadreByIdPresidente(presidente.getId()));
-//		return "Ricette.html";
-//		//return "redirect:Ricetta/"+ricetta.getId();
-//	}
+
     
 /*Form per aggiungere giocatori alla squadra del presidente corrente*/
     @GetMapping("/NewGiocatori/{id}")
@@ -139,8 +99,13 @@ public class  SquadraController {
 			@RequestParam("id")Long id,
 			 Model model) {
     	Squadra squadras = squadraService.findById(id);
-    	System.out.println(squadras.getGiocatori());
     	
+    	 if (giocatore.getDataInizio() == null || giocatore.getDataFine() == null) {
+    	        model.addAttribute("messaggioErrore", "Le date di inizio e fine non possono essere vuote.");
+    	        return "pres/formNewGiocatori.html"; // Torna alla pagina del form
+    	    }else {
+    	    
+    	    
     	giocatore.setId(null);
     	
     	giocatore.setSquadra(squadras);
@@ -151,7 +116,7 @@ public class  SquadraController {
 	    System.out.println("I giocatori sono:"+squadras.getGiocatori());
 	    // Salva il giocatore e aggiorna la squadra
 	    System.out.println("L'id e': "+squadras.getId());
-	    return "redirect:/Squadra/" + squadras.getId()+"/Giocatori";
+	    return "redirect:/Squadra/" + squadras.getId()+"/Giocatori"; }
 //		return "redirect:Giocatori";
 	}
     

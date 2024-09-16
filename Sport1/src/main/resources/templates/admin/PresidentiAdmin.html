@@ -28,7 +28,7 @@
         <ul class="chef-list" th:if="${!presidenti.isEmpty()}">
             <li th:each="Presidente : ${presidenti}">
                 <a th:href="@{'/Presidente/' + ${Presidente.id}}" th:text="${Presidente.nome}"></a>
-                <a th:href="@{'/CancellaCuoco/' + ${Presidente.id}}"class="delete-button" >Cancella Presidente</a> 
+                <a th:href="@{'/CancellaPresidente/' + ${Presidente.id}}"class="delete-button" >Cancella Presidente</a> 
             </li>
         </ul>
     </div>

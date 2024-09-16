@@ -24,5 +24,8 @@ public class UserService {
 	public Boolean existsByNameAndSurname(String name, String surname) {
 		return userRepository.existsByNameAndSurname(name,surname);
 	}
+	public void deleteById(Long id) {
+		 this.userRepository.deleteById(id);
+	}
 	
 	}

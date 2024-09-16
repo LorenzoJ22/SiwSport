@@ -11,10 +11,15 @@
 <body>
     <header>
         <div class="logo">
-            <a href="/"><img src="/images/im.png" width="15%"></a>
+            <a href="/"><img src="/images/im.png" width="50%"></a>
         </div>
     </header>
-
+    
+ 	
+        <div th:if="${messaggioErrore}" class="error-message">
+            <span th:text="${messaggioErrore}"></span>
+        </div>
+        
     <div class="content">
         <h1>Aggiungi i Giocatori</h1>
 
@@ -36,7 +41,7 @@
             
             <div>
         <label for="data">Data:</label>
-        <input type="date" id="data" th:field="${giocatore.data}" />
+        <input type="date" id="data" th:field="${giocatore.data}" required />
     </div>
 
 
@@ -52,12 +57,14 @@
 
     <div>
         <label for="dataInizio">Data Inizio:</label>
-        <input type="date" id="dataInizio" th:field="${giocatore.dataInizio}" />
+        <input type="date" id="dataInizio" th:field="${giocatore.dataInizio}" required />
+          
     </div>
 
     <div>
         <label for="dataFine">Data Fine:</label>
-        <input type="date" id="dataFine" th:field="${giocatore.dataFine}" />
+        <input type="date" id="dataFine" th:field="${giocatore.dataFine}" required />
+          
     </div>
             
             <div>
