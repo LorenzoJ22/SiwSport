@@ -6,34 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presidente</title>
     <link rel="stylesheet" href="/css/style.css?version=2">
-    <style>
-        /* CSS inline per dimostrazione; sposta in stile.css */
-        body {
-            font-family: Arial, sans-serif;
-            background: url('/images/ul.jpg') no-repeat center center fixed; 
-    		background-size: cover;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-
-        .content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-
-        h1 {
-            color: #333;
-        }
-    </style>
+    
 </head>
 
 <body>
@@ -45,6 +18,14 @@
 
     <div class="content">
         <h1 th:text="${Presidente.nome} + ' ' + ${Presidente.cognome}"></h1>
+            <p><span class="label">Nome Presidente:</span> <span th:text="${Presidente.nome} + ' ' + ${Presidente.cognome}"></span></p>
+         	<p><span class="label">Codice Fiscale:</span> <span th:text="${Presidente.codiceFiscale}"></span></p>
+	        <p><span class="label">Data di Nascita:</span> <span th:text="${Presidente.nascita}"></span></p>
+            <p><span class="label">Luogo di Nascita:</span> <span th:text="${Presidente.luogoDiNascita}"></span></p>
+            <p><span class="label">Squadra:</span>
+                <span th:if="${Presidente.squadra != null}" th:text="${Presidente.squadra.nome}"></span>
+                <span th:if="${Presidente.squadra == null}">Non disponibile</span>
+            </p>
     </div>
 </body>
 
