@@ -19,9 +19,13 @@
     <div class="content">
         <h1>Giocatori:</h1>
 		
-        <div th:if="${giocatori.isEmpty()}" class="no-chefs">Non ci sono giocatori nel sistema</div>
+        <div th:if="${giocatori.isEmpty()}" >Non ci sono giocatori nel sistema</div>
+        
+		    <div th:if="${!giocatori.isEmpty()}">
+            <p>Numero totale di giocatori: <span th:text="${NumeroGiocatori}"></span></p>
+        </div>
 
-        <ul class="chef-list" th:if="${!giocatori.isEmpty()}">
+        <ul  th:if="${!giocatori.isEmpty()}">
             <li th:each="Giocatore : ${giocatori}">
                 <a th:href="@{'/Giocatore/' + ${Giocatore.id}}" th:text="${Giocatore.nome}+ ' ' + ${Giocatore.cognome}"></a>
             </li>

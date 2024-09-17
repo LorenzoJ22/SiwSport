@@ -19,5 +19,5 @@ public interface GiocatoreRepository extends CrudRepository<Giocatore,Long> {
 	 
 	 @Query(value = "SELECT g.* FROM squadra s JOIN giocatore g ON s.id = g.squadra_id WHERE g.squadra_id =:fid", nativeQuery = true)
 	 Iterable<Giocatore> TrovaGiocatoriBySquadraId(@Param("fid")Long id);
-		
+	 long count(); 
 }

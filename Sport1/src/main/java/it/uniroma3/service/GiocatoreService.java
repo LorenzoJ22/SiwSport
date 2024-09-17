@@ -38,4 +38,7 @@ public class GiocatoreService {
 	public Iterable<Giocatore>TrovaGiocatoriBySquadraId(Long id){
 		return giocatoreRepository.TrovaGiocatoriBySquadraId(id);
 	}
+	public Long count() {
+		return giocatoreRepository.count();
+	}
 }

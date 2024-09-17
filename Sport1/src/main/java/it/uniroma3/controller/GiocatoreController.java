@@ -31,6 +31,7 @@ public class  GiocatoreController {
 	 @GetMapping("/Giocatori")
 	 public String getGiocatori(Model model) {
 		 model.addAttribute("giocatori", this.giocatoreService.findAll());
+		 model.addAttribute("NumeroGiocatori", this.giocatoreService.count());
 		 return "Giocatori.html";
 	 }
 	 
