@@ -41,7 +41,7 @@ public class  GiocatoreController {
 	public String getGiocatoriSquadra(@PathVariable("id")Long Id,Model model) {
 			model.addAttribute("giocatori", giocatoreService.TrovaGiocatoriBySquadraId(Id));
 //			model.addAttribute("Ingredienti", this.ingredienteService.findAll());
-			return "Giocatori.html";
+			return "GiocatoriPresidente.html";
 		}
 	 /*Elenco giocatori, della squadra del presidente, da poter cancellare*/
 	 @GetMapping("/GiocatoriPresidente/{id}")
